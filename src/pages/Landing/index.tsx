@@ -30,8 +30,8 @@ export default function Landing(){
                     </a>
 
                     <a href = "#" className= "give-classes">
-                        <img src = {giveClasses} alt = "Estudar"/>
-                        Estudar
+                        <img src = {giveClasses} alt = "Dar aulas"/>
+                        Dar aulas
                     </a>
                 </div>
 
