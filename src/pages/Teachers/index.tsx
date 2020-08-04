@@ -1,6 +1,6 @@
 import React from 'react';
-import './teachers.css';
 import PageHeader from '../../components/PageHeader';
+import './teachers.css';
 
 export default function Teachers() {
     return (

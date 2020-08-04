@@ -2,10 +2,9 @@ import React from 'react';
 
 import backIcon from '../../assets/images/icons/back.svg';
 import logo from '../../assets/images/logo.svg';
+import './pageHeader.css';
 
 import { Link } from 'react-router-dom';
-
-import './pageHeader.css';
 
 interface PageHeaderProps {
     title: string;
@@ -23,6 +22,8 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
             <div className="header-content">
                 <strong>{props.title}</strong>
             </div>
+
+            {props.children}
 
         </header>
     );
