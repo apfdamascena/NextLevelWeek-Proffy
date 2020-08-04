@@ -51,14 +51,15 @@
         max-width: 100%;
     }
 
-    form {
+    #search-teachers {
         display: grid;
+        width: 800px;
         justify-content: center;
         grid-template-columns: repeat(3, 1fr);
-        column-gap: 16px;
-        position: absolute;
-        top: 240px;
-        left: 5%;
+        column-gap: 10px;
+        margin: 0 auto;
+        position: relative;
+        top: 20px;
     }
 
     #search-teachers .input-block + .input-block {

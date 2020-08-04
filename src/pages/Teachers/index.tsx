@@ -23,6 +23,12 @@ export default function Teachers() {
                     </div>
                 </form>
             </PageHeader>
+
+            <main>
+                <article className= "teacher-item">
+                    
+                </article>
+            </main>
         </div>
     );
 }
