@@ -1,7 +1,9 @@
 import express from 'express';
+import routes from './routes';
 
 const APP = express();
 APP.use(express.json());
+APP.use(routes);
 
 //get -> Buscar ou listar uma info
 // post -> criar uma info
@@ -12,9 +14,6 @@ APP.use(express.json());
 // route params: identificar qual recurso eu quero atualizar ou deletar
 // query params: paginacao, filtros, ordenacao
 
-APP.post('/users', (request, response) => {
-    return response.json({ message: "hellow world"});
-});
 
 APP.listen(2608);
 
