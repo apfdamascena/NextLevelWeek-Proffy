@@ -12,14 +12,20 @@ export default class ClassControler {
     async index(request: Request, response: Response){
         const filters = request.query;
 
-        if(!filters.week_day || !filters.subject || !filters.time){
+        const subject = filters.subject as string;
+        const week_day = filters.week_day as string;
+        const time = filters.time as string;
+
+        if(!week_day || !subject || !time){
             return response.status(400).json({
                 error: "missing filterst o search classes"
             });
         }
 
-        const timeMinutes = convertHourToMinutes(filters.time as string);
-        console.log(timeMinutes);
+        const timeMinutes = convertHourToMinutes(time);
+
+        const classes = await database('classes')
+            .where('classes.subject', '=', subject)
         return response.send();
     }
     
