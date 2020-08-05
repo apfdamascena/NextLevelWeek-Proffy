@@ -14,10 +14,7 @@ export default function Teachers() {
                         <input type = "text" id = "subject"/>
                     </div>
 
-                    <div className="input-block">
-                        <label htmlFor="week_day">Dia da semana</label>
-                        <input type = "text" id = "week_day"/>
-                    </div>
+
             
                     <div className="input-block">
                         <label htmlFor="time">Hora</label>
