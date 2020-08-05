@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 interface PageHeaderProps {
     title: string;
+    description?: string;
 }
 const PageHeader: React.FC<PageHeaderProps> = (props) => {
     return (
@@ -21,9 +22,9 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
 
             <div className="header-content">
                 <strong>{props.title}</strong>
+                { props.description && <p>{props .description}</p>}
+                {props.children}
             </div>
-
-            {props.children}
 
         </header>
     );

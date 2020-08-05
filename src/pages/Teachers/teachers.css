@@ -53,13 +53,12 @@
 
     #search-teachers {
         display: grid;
-        width: 800px;
         justify-content: center;
         grid-template-columns: repeat(3, 1fr);
         column-gap: 10px;
         margin: 0 auto;
-        position: relative;
-        top: 20px;
+        position: absolute;
+        bottom: -28px;
     }
 
     #search-teachers .input-block + .input-block {
