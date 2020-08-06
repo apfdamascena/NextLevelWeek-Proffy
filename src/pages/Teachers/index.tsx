@@ -1,18 +1,29 @@
 import React, { useState, FormEvent } from 'react';
 import PageHeader from '../../components/PageHeader';
 import './teachers.css';
-import TeacherItem from '../../components/TeacherItem';
+import TeacherItem, {Teacher} from '../../components/TeacherItem';
 import Input from '../../components/Input';
 import Select from '../../components/Select';
+import API from '../../services/api';
+
 
 export default function Teachers() {
+    const [teachers, setTeachers] = useState([]);
     const [subject, setSubject] = useState('');
     const [week_day, setWeekDay] = useState('');
     const [time, setTime] = useState('');
 
-    function searchTeachers(event: FormEvent){
+    async function searchTeachers(event: FormEvent){
         event.preventDefault();
 
+        const response = await API.get('classes', {
+            params: {
+                subject,
+                week_day,
+                time
+            }
+        });
+        setTeachers(response.data);
     }
     return (
         <div id="page-teacher-list" className="container">
@@ -53,12 +64,16 @@ export default function Teachers() {
                         ]}
                     />
                     <Input type="time" name="time" label="Hora" value = {time}
-                        onChange = { (event) => { setTime(event.target.value)}}/>
+                        onChange = { (event) => { setTime(event.target.value) }}/>
+                    
+                    <button type = "submit" onClick = {searchTeachers}>Buscar</button>
                 </form>
             </PageHeader>
 
             <main>
-                <TeacherItem />
+                {teachers.map( (teacher: Teacher) => {
+                    return <TeacherItem key = {teacher.id} teacher= {teacher}/>
+                })}
             </main>
         </div>
     );

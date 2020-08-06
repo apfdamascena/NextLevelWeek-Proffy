@@ -1,35 +1,56 @@
 import React from 'react';
 import './teacherItem.css';
 import whatsAppIcon from '../../assets/images/icons/whatsapp.svg';
+import API from '../../services/api';
 
-export default function TeacherItem(){
+
+export interface Teacher {
+    avatar: string;
+    bio: string;
+    cost: number;
+    id: number;
+    name: string;
+    subject: string;
+    whatsapp: number;
+}
+
+interface TeacherItemProps {
+    teacher: Teacher;
+}
+
+const TeacherItem: React.FC<TeacherItemProps> =({teacher}) => {
+
+    function createNewConnection(){
+        API.post('connections', {
+            user_id: teacher.id,
+        });
+    }
     return(
         <article className= "teacher-item">
         <header>
-        <img src = "https://avatars1.githubusercontent.com/u/52205263?s=400&u=033c62df4cc4f73b3010473faf859919019679af&v=4" alt = "Alex Image" />
+        <img src = {teacher.avatar} alt = {teacher.name} />
         <div>
-            <strong>Alex Damascena</strong>
-            <span>Matemática</span>
+            <strong>{teacher.name}</strong>
+            <span>{teacher.subject}</span>
         </div>
         </header>
 
         <p>
-            Estude até falar: eu nao aguento mais.
-            <br/> <br/>
-            Tentando aprender algo sempre que possível. Falar que "sabe" é apenas um bloqueio
-            mental para melhorar ainda mais. Esteja sempre no topo e lá sempre terá uma plateia para você incentivar.
+            {teacher.bio}
         </p>
 
         <footer>
             <p>
                 Preço/hora
-                <strong>R$ 80,00</strong>
+                <strong>{`R$ ${teacher.cost},00`}</strong>
             </p>
-            <button type="button">
+            <a target= "_blank" onClick = {createNewConnection}href = {`https://wa.me/${teacher.whatsapp}`}>
                 <img src = {whatsAppIcon} alt= "Whatsapp: Entrar em contato" />
                 Entrar em contato
-            </button>
+            </a>
         </footer>
     </article>
     );
 }
+
+export default TeacherItem;
