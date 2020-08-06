@@ -42,6 +42,19 @@
     width: 100%;
 }
 
+#page-teacher-form main fieldset legend button {
+    background: none;
+    border: 0;
+    color: var(--color-primary);
+    font: 700 1.6rem Archivo;
+    cursor: pointer;
+    transition: color 0.2;
+}
+
+#page-teacher-form main fieldset legend button:hover {
+    color: var(--color-primary-dark);
+}
+
 #page-teacher-form main label {
     color: var(--color-text-complement);
 }
@@ -106,6 +119,16 @@
         padding: 0 6.4rem;
     }
 
+    #page-teacher-form  main .schedule-item {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        column-gap: 0.8rem;
+    }
+    
+    #page-teacher-form  main .schedule-item .input-block {
+        margin-top: 0 !important;
+    }
+
     #page-teacher-form  main footer {
         padding: 4.0rem 6.4rem;
         display: flex;
@@ -121,5 +144,7 @@
         width: 20rem;
         margin-top: 0;
     }
+
+
 
 }
