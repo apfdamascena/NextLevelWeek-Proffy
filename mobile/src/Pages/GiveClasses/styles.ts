@@ -41,6 +41,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 8,
     },
+
+    okButtonText: {
+        color: '#FFF',
+        fontSize: 16,
+        fontFamily: 'Archivo_700Bold'
+    }
 });
 
 export default styles;
