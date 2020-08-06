@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, FormEvent } from 'react';
 import PageHeader from '../../components/PageHeader';
 import './teachers.css';
 import TeacherItem from '../../components/TeacherItem';
@@ -6,13 +6,23 @@ import Input from '../../components/Input';
 import Select from '../../components/Select';
 
 export default function Teachers() {
+    const [subject, setSubject] = useState('');
+    const [week_day, setWeekDay] = useState('');
+    const [time, setTime] = useState('');
+
+    function searchTeachers(event: FormEvent){
+        event.preventDefault();
+
+    }
     return (
         <div id="page-teacher-list" className="container">
             <PageHeader title="Estes são os proffys disponíveis.">
-                <form id="search-teachers">
+                <form id="search-teachers" onSubmit = {searchTeachers}>
                     <Select
                         name="subject"
                         label="Matéria"
+                        value = {subject}
+                        onChange = { (event) => { setSubject(event.target.value)}}
                         options={[
                             { value: 'Artes', label: 'Artes' },
                             { value: 'Biologia', label: 'Biologia' },
@@ -30,6 +40,8 @@ export default function Teachers() {
                     <Select
                         name="week_day"
                         label="Dia da semana"
+                        value = {week_day}
+                        onChange = { (event) => { setWeekDay(event.target.value)}}
                         options={[
                             { value: '0', label: 'Domingo' },
                             { value: '1', label: 'Segunda-feira' },
@@ -40,7 +52,8 @@ export default function Teachers() {
                             { value: '6', label: 'Sábado' }
                         ]}
                     />
-                    <Input type="time" name="time" label="Hora" />
+                    <Input type="time" name="time" label="Hora" value = {time}
+                        onChange = { (event) => { setTime(event.target.value)}}/>
                 </form>
             </PageHeader>
 
