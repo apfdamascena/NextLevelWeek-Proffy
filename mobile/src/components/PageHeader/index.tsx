@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import './styles';
 import { View, Image, Text } from 'react-native';
 import styles from './styles';
@@ -10,9 +10,10 @@ import { useNavigation } from '@react-navigation/native';
 
 interface PageHeaderProps {
     title: String;
+    headerRight?: ReactNode; 
 
 }
-const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
+const PageHeader: React.FC<PageHeaderProps> = ({ title, headerRight, children }) => {
 
     const { navigate } = useNavigation();
     
@@ -31,6 +32,9 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
             </View>
 
             <Text style={styles.title}>{title}</Text>
+
+            { headerRight && }
+            {children}
         </View>
     );
 }

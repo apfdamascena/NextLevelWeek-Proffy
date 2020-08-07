@@ -31,8 +31,9 @@ export default function TeacherItem() {
                 </Text>
 
                 <View style = {styles.buttonsContainer}>
-                    <RectButton style = {styles.favoriteButton}>
-                        <Image source = {heartOutlineIcon}/>
+                    <RectButton style = {[styles.favoriteButton, styles.favorited]}>
+                        {/* <Image source = {heartOutlineIcon}/> */}
+                        <Image source = {unFavoriteIcon}/>
                     </RectButton>
 
                     <RectButton style = {styles.contactButton}>
