@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        height: 100
+        height: 70
     },
 
     title: {
