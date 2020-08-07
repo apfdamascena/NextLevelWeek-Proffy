@@ -39,11 +39,19 @@ const styles = StyleSheet.create({
     },
 
     submitButton: {
-
+        backgroundColor: '#04D361',
+        height: 56,
+        borderRadius: 8,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 24
     },
 
     submitButtonText: {
-        
+        color: '#FFF',
+        fontFamily: 'Archivo_700Bold',
+        fontSize: 16
     }
 });
 
