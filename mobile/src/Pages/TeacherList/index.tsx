@@ -9,7 +9,7 @@ import API from '../../services/api';
 import AsyncStorage from '@react-native-community/async-storage';
 
 export default function TeacherList() {
-    const [favorites, setFavorites ] = useState([]);
+    const [favorites, setFavorites ] = useState<number[]>([]);
     const [teachers, setTeachers] = useState([]);
     const [isFiltersVisible, setIsFiltersVisible] = useState(false);
     const [subject, setSubject] = useState('');
@@ -19,7 +19,11 @@ export default function TeacherList() {
     useEffect(() => {
         AsyncStorage.getItem('favorites').then((response) => {
             if(response){
-                setFavorites(JSON.parse(response));
+                const favoritedTeachers = JSON.parse(response);
+                const favoritedTeachersIds = favoritedTeachers.map((teacher: Teacher) => {
+                    return teacher.id;
+                })
+                setFavorites(favoritedTeachersIds);
             }
         });
 
@@ -93,7 +97,11 @@ export default function TeacherList() {
                 }}
             >
                 {teachers.map( (teacher: Teacher) => {
-                    return <TeacherItem key={teacher.id} teacher={teacher}/>
+                    return (
+                    <TeacherItem key={teacher.id} teacher={teacher}
+                        favorited = {favorites.includes(teacher.id)}
+                    />
+                    );
                 })}
             </ScrollView>
         </View>
