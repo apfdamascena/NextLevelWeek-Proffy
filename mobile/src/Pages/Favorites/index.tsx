@@ -1,9 +1,10 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState} from 'react';
 import { View, ScrollView } from 'react-native';
 import styles from './styles';
 import PageHeader from '../../components/PageHeader';
 import TeacherItem, { Teacher } from '../../components/TeacherItem/TeacherItem';
 import AsyncStorage from '@react-native-community/async-storage';
+import {useFocusEffect} from '@react-navigation/native';
 
 export default function Favorite(){
     const [favorites, setFavorites] = useState([]);
@@ -17,9 +18,11 @@ export default function Favorite(){
         });
     }
 
-    useEffect(() => {
+    useFocusEffect(React.useCallback(() => {
         loadFavorites();
-    },[])
+        },[])
+    )
+
     return(
         <View style = {styles.container}>
             <PageHeader title =  "Meus proffys favoritos"/>
